@@ -11,6 +11,7 @@ import { DataService, Message } from '../services/data.service';
 })
 export class HomePage {
   private data = inject(DataService);
+  public resultadoDolares = 0.00;
   constructor() {}
 
   refresh(ev: any) {
@@ -19,7 +20,8 @@ export class HomePage {
     }, 3000);
   }
 
-  getMessages(): Message[] {
-    return this.data.getMessages();
+  updateResult(ev: any) {
+    const intValue = parseFloat(ev.target.value)
+    this.resultadoDolares = ((intValue || 0) / 8)
   }
 }
